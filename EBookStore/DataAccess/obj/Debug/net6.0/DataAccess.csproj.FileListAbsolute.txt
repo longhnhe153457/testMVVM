@@ -1,0 +1,15 @@
+D:\hoclai.net\EBookStore\DataAccess\bin\Debug\net6.0\DataAccess.deps.json
+D:\hoclai.net\EBookStore\DataAccess\bin\Debug\net6.0\DataAccess.dll
+D:\hoclai.net\EBookStore\DataAccess\bin\Debug\net6.0\DataAccess.pdb
+D:\hoclai.net\EBookStore\DataAccess\bin\Debug\net6.0\BusinessObject.dll
+D:\hoclai.net\EBookStore\DataAccess\bin\Debug\net6.0\BusinessObject.pdb
+D:\hoclai.net\EBookStore\DataAccess\obj\Debug\net6.0\DataAccess.csproj.AssemblyReference.cache
+D:\hoclai.net\EBookStore\DataAccess\obj\Debug\net6.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\hoclai.net\EBookStore\DataAccess\obj\Debug\net6.0\DataAccess.AssemblyInfoInputs.cache
+D:\hoclai.net\EBookStore\DataAccess\obj\Debug\net6.0\DataAccess.AssemblyInfo.cs
+D:\hoclai.net\EBookStore\DataAccess\obj\Debug\net6.0\DataAccess.csproj.CoreCompileInputs.cache
+D:\hoclai.net\EBookStore\DataAccess\obj\Debug\net6.0\DataAccess.csproj.CopyComplete
+D:\hoclai.net\EBookStore\DataAccess\obj\Debug\net6.0\DataAccess.dll
+D:\hoclai.net\EBookStore\DataAccess\obj\Debug\net6.0\refint\DataAccess.dll
+D:\hoclai.net\EBookStore\DataAccess\obj\Debug\net6.0\DataAccess.pdb
+D:\hoclai.net\EBookStore\DataAccess\obj\Debug\net6.0\ref\DataAccess.dll

@@ -1,0 +1,31 @@
+﻿@model BusinessObject.DTO.UserDTO
+<div id="content">
+    <div id="content-left">
+        <h3 style="font-weight: normal;">Welcome Back</h3>
+        <h3>Account Management</h3>
+        <ul>
+            <a href="~/home/profile">
+            <li>Personal information</li></a>
+        </ul>
+    </div>
+    <div id="content-right">
+        <div class="path">Personal information</b></div>
+        <div class="content-main">
+            <div id="profile-content">
+                <div class="profile-content-col">
+                    <div>Email: <br />@Html.DisplayFor(i => Model.EmailAddress)</div>
+                    <div>FullName: <br />@Html.DisplayFor(i => Model.LastName) @Html.DisplayFor(i => Model.MiddleName) @Html.DisplayFor(i => Model.FirstName)</div>
+                </div>
+                <div class="profile-content-col">
+                    <div>Publisher: <br />@Html.DisplayFor(i => Model.Publisher)</div>
+                    <div>HireDate: <br />@Html.DisplayFor(i => Model.HireDate)</div>
+                </div>
+                <div class="profile-content-col">
+                    <div>
+                        <a asp-controller="home" asp-action="edit" asp-route-id="@Model.UserId">Update Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

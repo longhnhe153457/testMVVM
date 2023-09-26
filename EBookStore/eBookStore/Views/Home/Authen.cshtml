@@ -1,0 +1,27 @@
+﻿@model BusinessObject.DTO.AuthenDTO
+<div id="form">
+    <div id="form-title">
+        <span><a asp-controller="home" asp-action="register">REGISTER</a></span>
+        <span><a asp-controller="home" asp-action="authen" style="color: red;">LOG IN</a></span>
+    </div>
+    <div id="form-content">
+        @using (Html.BeginForm("Authen", "Home", FormMethod.Post))
+        {
+            <label>Email<span style="color: red;">*</span></label>
+
+            <br />
+            @Html.TextBoxFor(m => m.EmailAddress)
+
+            <br />
+            <label>Password<span style="color: red;">*</span></label>
+
+            <br />
+            @Html.PasswordFor(m => m.Password)
+
+            <br />
+            <div></div>
+            <div></div>
+            <input type="submit" value="LOG IN" style="margin-bottom: 30px;" />
+        }
+    </div>
+</div>

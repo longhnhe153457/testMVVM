@@ -1,0 +1,131 @@
+﻿@model X.PagedList.IPagedList<BusinessObject.DTO.BookDTO>
+@using X.PagedList.Mvc.Core
+<style>
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+        ul.pagination li span {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+        ul.pagination li a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        ul.pagination li a:hover:not(.active) {
+            background-color: #ddd;
+        }
+</style>
+<div id="content">
+    <div id="content-left">
+        <h3>Dashboard</h3>
+        <ul>
+            <a asp-controller="booksAuthors" asp-action="index">
+            <li>All books - authors</li></a>
+            <a asp-controller="authors" asp-action="index">
+            <li>All authors</li></a>
+            <a asp-controller="books" asp-action="index">
+            <li>All books</li></a>
+            <a asp-controller="publishers" asp-action="index">
+            <li>All publisher</li></a>
+            <a asp-controller="users" asp-action="index">
+            <li>All users</li></a>
+        </ul>
+    </div>
+    <div id="content-right">
+        <div class="path-admin">BOOKS LIST</b></div>
+        <div class="content-main">
+            <div id="content-main-dashboard">
+                <div id="order-title" style="display:flex; justify-content:space-between">
+                    <div id="product-title-3" style="width: 20%;">
+                        <a asp-controller="books" asp-action="create">Create a new Books</a>
+                    </div>
+                    <div id="product-title-2" style="display:flex; justify-content:space-between ; width: 65%;">
+                        @using (Html.BeginForm("Index", "Books", FormMethod.Post, new { @id = "content-main-product" }))
+                        {
+                            @if (ViewData["bookName"] is not null)
+                            {
+                                <input type="text" name="bookName" style="margin: 0 10px 0 0" value="@ViewData["bookName"]" placeholder="Enter book to search" />
+                            }
+                            else
+                            {
+                                <input type="text" name="bookName" style="margin: 0 10px 0 0" placeholder="Enter book to search" />
+                            }
+                            @if (ViewData["price"] is not null)
+                            {
+                                <input type="text" name="price" value="@ViewData["price"]" placeholder="Enter price to search" />
+                            }
+                            else
+                            {
+                                <input type="text" name="price" placeholder="Enter price to search" />
+                            }
+
+                            <input type="submit" value="Search" />
+
+                        }
+                    </div>
+                </div>
+                <div id="order-table">
+                    <table id="orders">
+                        <tr>
+                            <th>BookId</th>
+                            <th>Publisher</th>
+                            <th>PublishedDate</th>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Advance</th>
+                            <th>Royalty</th>
+                            <th>YtdSales</th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(i => item.BookId)</td>
+                                <td>@Html.DisplayFor(i => item.Pub)</td>
+                                <td>@Html.DisplayFor(i => item.PublishedDate)</td>
+                                <td>@Html.DisplayFor(i => item.Title)</td>
+                                <td>@Html.DisplayFor(i => item.Type)</td>
+                                <td>@Html.DisplayFor(i => item.Price)</td>
+                                <td>@Html.DisplayFor(i => item.Advance)</td>
+                                <td>@Html.DisplayFor(i => item.Royalty)</td>
+                                <td>@Html.DisplayFor(i => item.YtdSales)</td>
+                                <td>
+                                    <a asp-controller="books" asp-action="edit" asp-route-id="@item.BookId">Edit</a> |
+                                    <a asp-controller="books" asp-action="delete" asp-route-id="@item.BookId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <div>
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    <div class="pagination" style="margin-left: 400px">
+                        @Html.PagedListPager( Model, page => Url.Action("Index", new { page }) )
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

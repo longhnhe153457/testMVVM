@@ -1,0 +1,104 @@
+﻿@model X.PagedList.IPagedList<BusinessObject.DTO.UserDTO>
+@using X.PagedList.Mvc.Core
+<style>
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+        ul.pagination li span {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+            ul.pagination li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            ul.pagination li a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+<div id="content">
+    <div id="content-left">
+        <h3>Dashboard</h3>
+        <ul>
+            <a asp-controller="booksAuthors" asp-action="index">
+            <li>All books - authors</li></a>
+            <a asp-controller="authors" asp-action="index">
+            <li>All authors</li></a>
+            <a asp-controller="books" asp-action="index">
+            <li>All books</li></a>
+            <a asp-controller="publishers" asp-action="index">
+            <li>All publisher</li></a>
+            <a asp-controller="users" asp-action="index">
+            <li>All users</li></a>
+        </ul>
+    </div>
+    <div id="content-right">
+        <div class="path-admin">USERS LIST</b></div>
+        <div class="content-main">
+            <div id="content-main-dashboard">
+                <div id="order-title">
+                    <div id="product-title-3" style="width: 20%;">
+                    </div>
+                </div>
+                <div id="order-table">
+                    <table id="orders">
+                        <tr>
+                            <th>UserID</th>
+                            <th>Email</th>
+                            <th>Source</th>
+                            <th>FullName</th>
+                            <th>Role</th>
+                            <th>Publisher</th>
+                            <th>HireDate</th>
+                            <th></th>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    <a href="#">
+                                        #@Html.DisplayFor(i => item.UserId)
+                                    </a>
+                                </td>
+                                <td>@Html.DisplayFor(i => item.EmailAddress)</td>
+                                <td>@Html.DisplayFor(i => item.Source)</td>
+                                <td>@Html.DisplayFor(i => item.LastName) @Html.DisplayFor(i => item.MiddleName) @Html.DisplayFor(i => item.FirstName)</td>
+                                <td>@Html.DisplayFor(i => item.Role)</td>
+                                <td>@Html.DisplayFor(i => item.Publisher)</td>
+                                <td>@Html.DisplayFor(i => item.HireDate)</td>
+                                <td>
+                                    <a asp-controller="users" asp-action="delete" asp-route-id="@item.UserId">Delete</a>
+                                </td>
+                            </tr>
+                            }
+                    </table>
+                </div>
+                <div>
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    <div class="pagination" style="margin-left: 400px">
+                        @Html.PagedListPager( Model, page => Url.Action("Index", new { page }) )
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

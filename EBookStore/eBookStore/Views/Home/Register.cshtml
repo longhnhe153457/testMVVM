@@ -1,0 +1,55 @@
+﻿@using BusinessObject.DTO
+@model BusinessObject.DTO.CreateUpdateUserDTO
+<div id="form">
+    <div id="form-title">
+        <span><a asp-controller="home" asp-action="register" style="color: red;">REGISTER</a></span>
+        <span><a asp-controller="home" asp-action="authen">LOG IN</a></span>
+    </div>
+    <div id="form-content">
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.RoleId, new { @class = "hidden" })
+            @Html.HiddenFor(m => m.HireDate, new { @class = "hidden", @Value = DateTime.Now })
+            <label>Email<span style="color: red;">*</span></label>
+
+            <br />
+            @Html.TextBoxFor(m => m.EmailAddress)
+
+            <br />
+            <label>Password<span style="color: red;">*</span></label>
+
+            <br />
+            @Html.PasswordFor(m => m.Password)
+
+            <br />
+            <label>Source</label>
+
+            <br />
+            @Html.TextBoxFor(m => m.Source)
+
+            <br />
+            <label>FirstName<span style="color: red;">*</span></label>
+
+            <br />
+            @Html.TextBoxFor(m => m.FirstName)
+
+            <br />
+            <label>MiddleName</label>
+
+            <br />
+            @Html.TextBoxFor(m => m.MiddleName)
+
+            <br />
+            <label>LastName<span style="color: red;">*</span></label>
+
+            <br />
+            @Html.TextBoxFor(m => m.LastName)
+            <label>Publisher<span style="color: red;">*</span></label>
+
+            <br />
+            <select asp-for="@Model.PubId" asp-items="@(new SelectList(ViewBag.Pub, "PubId", "PublisherName"))" class="form-control"></select>
+            <div></div>
+            <input type="submit" value="REGISTER" style="margin-bottom: 30px;" />
+        }
+    </div>
+</div>

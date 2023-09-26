@@ -1,0 +1,38 @@
+﻿@model BusinessObject.DTO.PublisherDTO
+<div id="content">
+    <div id="content-left">
+        <h3>Dashboard</h3>
+        <ul>
+            <a asp-controller="authors" asp-action="index">
+            <li>All authors</li></a>
+            <a asp-controller="books" asp-action="index">
+            <li>All books</li></a>
+            <a asp-controller="publishers" asp-action="index">
+            <li>All publisher</li></a>
+            <a asp-controller="users" asp-action="index">
+            <li>All users</li></a>
+        </ul>
+    </div>
+    <div id="content-right">
+        <div class="path-admin">UPDATE A PUBLISHER</b></div>
+        <div class="content-main">
+            @using (Html.BeginForm("Edit", "Publishers", FormMethod.Post, new { @id = "content-main-product" }))
+            {
+                <div class="content-main-1">
+                    @Html.HiddenFor(m => m.PubId, new { @class = "hidden" })
+                    <label>PublisherName (*):</label><br />
+                    @Html.TextBoxFor(m => m.PublisherName, new { value = Model.PublisherName })<br />
+                    <label>Country (*):</label><br />
+                    @Html.TextBoxFor(m => m.Country, new { value = Model.Country })<br />
+                </div>
+                <div class="content-main-1">
+                    <label>City (*):</label><br />
+                    @Html.TextBoxFor(m => m.City, new { value = Model.City })
+                    <label>State (*):</label><br />
+                    @Html.TextBoxFor(m => m.State, new { value = Model.State })
+                    <input type="submit" value="UPDATE" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

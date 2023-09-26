@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="logo">
+                <a asp-controller="home" asp-action="index"><img src="~/img/logo.png" /></a>
+            </div>
+            <div id="banner">
+                <ul>
+                    @if (Context.Session.GetString("member") is not null || Context.Session.GetString("admin") is not null)
+                    {
+                        @if (Context.Session.GetString("member")is not null)
+                        {
+                            <li><a href="~/home/profile">Profile</a></li>
+                        }
+                        <li><a href="~/home/logout">LogOut</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="~/home/authen">Login</a></li>
+                        <li><a href="~/home/register">Register</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        @RenderBody()
+        <div id="footer">footer</div>
+    </div>
+</body>
+</html>
